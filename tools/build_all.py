@@ -56,10 +56,10 @@ all_boards = [
 
 sketch = 'examples/simple_daplink'
 
-if os.path.exists('bin'):
-    shutil.rmtree('bin')
+if os.path.exists('uf2'):
+    shutil.rmtree('uf2')
 
-os.makedirs('bin')
+os.makedirs('uf2')
 total_time = time.monotonic()
 
 print(build_separator)
@@ -89,7 +89,7 @@ for variant in all_boards:
             success = SUCCEEDED
             success_count += 1
             family_id = '0xADA52840' if "adafruit:nrf52" in variant else '0x0'
-            subprocess.run("python3 tools/uf2conv.py -f {} -c -o bin/daplink-{}-v1.0.1.uf2 {}/simple_daplink.ino.hex".format(family_id, variant_bare, output_dir), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            subprocess.run("python3 tools/uf2conv.py -f {} -c -o uf2/daplink-{}-v1.0.1.uf2 {}/simple_daplink.ino.hex".format(family_id, variant_bare, output_dir), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
     build_duration = time.monotonic() - start_time
 
