@@ -45,10 +45,13 @@ jobs:
         # Install library dependency
         arduino-cli lib install "Adafruit TinyUSB Library"
 
+        ls $HOME/Arduino/libraries
+
         # symlink this library to Arduino library folder
         ln -s $GITHUB_WORKSPACE $HOME/Arduino/libraries/Seeed_Arduino_DAPLink
         
-        ls $HOME/Arduino/libraries/Seeed_Arduino_DAPLink
+        ls $HOME/Arduino/libraries
+        cat $HOME/Arduino/libraries/Seeed_Arduino_DAPLink/library.properties
 
     - name: Build examples
       run: python3 tools/build_all.py
